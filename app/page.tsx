@@ -1,65 +1,126 @@
-import { Metadata } from "next"
-import { Button } from "components/Button/Button"
-import { LP_GRID_ITEMS } from "lp-items"
 
-export const metadata: Metadata = {
-  title: "Next.js Enterprise Boilerplate",
-  twitter: {
-    card: "summary_large_image",
-  },
-  openGraph: {
-    url: "https://next-enterprise.vercel.app/",
-    images: [
-      {
-        width: 1200,
-        height: 630,
-        url: "https://raw.githubusercontent.com/Blazity/next-enterprise/main/.github/assets/project-logo.png",
-      },
-    ],
-  },
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-600">
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            Workout. Stake. Earn.
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-200 mb-8">
+            Join the future of fitness with LockFit
+          </p>
+          <div className="flex gap-4 justify-center">
+            <a
+              href="#download"
+              className="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition"
+            >
+              Download Now
+            </a>
+            <a
+              href="#learn-more"
+              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition"
+            >
+              Learn More
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white" id="features">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16">Why Choose LockFit?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <FeatureCard
+              title="Earn $LOCKIN Tokens"
+              description="Get rewarded with $LOCKIN tokens for completing workout challenges and competitions."
+              icon="💰"
+            />
+            <FeatureCard
+              title="Verified Workouts"
+              description="Advanced sensors ensure fair play and accurate tracking of your fitness activities."
+              icon="✅"
+            />
+            <FeatureCard
+              title="Community Challenges"
+              description="Join team-based competitions and participate in global fitness leagues."
+              icon="🤝"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Download Section */}
+      <section className="py-20 bg-gray-50" id="download">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-8">Get Started Today</h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Available on iOS and Android
+          </p>
+          <div className="flex gap-6 justify-center">
+            <button className="bg-black text-white px-8 py-3 rounded-lg flex items-center gap-2">
+              <span>App Store</span>
+            </button>
+            <button className="bg-black text-white px-8 py-3 rounded-lg flex items-center gap-2">
+              <span>Play Store</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="font-bold text-xl mb-4">LockFit</h3>
+              <p className="text-gray-400">
+                The future of fitness motivation
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Features</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>Workout Tracking</li>
+                <li>Token Staking</li>
+                <li>Competitions</li>
+                <li>Rewards</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Resources</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>Documentation</li>
+                <li>Whitepaper</li>
+                <li>Blog</li>
+                <li>Support</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Connect</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>Twitter</li>
+                <li>Discord</li>
+                <li>Telegram</li>
+                <li>GitHub</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
 }
 
-export default function Web() {
+function FeatureCard({ title, description, icon }: { title: string; description: string; icon: string }) {
   return (
-    <>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto grid max-w-screen-xl px-4 py-8 text-center lg:py-16">
-          <div className="mx-auto place-self-center">
-            <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
-              Next.js Enterprise Boilerplate
-            </h1>
-            <p className="mb-6 max-w-2xl font-light text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl">
-              Jumpstart your enterprise project with our feature-packed, high-performance Next.js boilerplate!
-              Experience rapid UI development, AI-powered code reviews, and an extensive suite of tools for a smooth and
-              enjoyable development process.
-            </p>
-            <Button href="https://github.com/Blazity/next-enterprise" className="mr-3">
-              Get started
-            </Button>
-            <Button
-              href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise"
-              intent="secondary"
-            >
-              Deploy Now
-            </Button>
-          </div>
-        </div>
-      </section>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6">
-          <div className="justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
-            {LP_GRID_ITEMS.map((singleItem) => (
-              <div key={singleItem.title} className="flex flex-col items-center justify-center text-center">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 p-1.5 text-blue-700 dark:bg-primary-900 lg:h-12 lg:w-12">
-                  {singleItem.icon}
-                </div>
-                <h3 className="mb-2 text-xl font-bold dark:text-white">{singleItem.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400">{singleItem.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  )
+    <div className="p-6 rounded-xl bg-gray-50 text-center">
+      <div className="text-4xl mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
 }
